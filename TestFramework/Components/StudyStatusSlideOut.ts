@@ -8,16 +8,10 @@ export class StudyStatusSlideOut extends BaseModalComponent {
   constructor(page: Page, containerXPath: string = "#detailsDrawer") {
     super(page, containerXPath);
 
-    this.status = new DropDownComponent(
-      page,
-      "//div[@data-testid='studyStatuses']",
-      this.modal
-    );
+    this.status = new DropDownComponent(page, "//div[@data-testid='studyStatuses']", this.modal);
   }
 
-  public async selectStatus(
-    status: string
-  ): Promise<StudyStatusSlideOut> {
+  public async selectStatus(status: string): Promise<StudyStatusSlideOut> {
     await this.status.selectValue(status);
     return this;
   }

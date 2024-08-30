@@ -1,13 +1,13 @@
 import { Locator, Page } from "@playwright/test";
 import { StudyStatusSlideOut } from "./StudyStatusSlideOut";
 
-export class StudyBannerComponent{
+export class StudyBannerComponent {
   private readonly page: Page;
   private readonly studyIdLabel: Locator;
   private readonly studyStatus: Locator;
 
   constructor(page: Page) {
-    page = page;
+    this.page = page;
     this.studyIdLabel = page.locator("//div[@id = 'detailStudyCCID']//div[2]");
     this.studyStatus = page.locator("//span[@data-testid = 'statusFlag']");
   }

@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 import { StudyBannerComponent } from "../Components/StudyBannerComponent";
 
-export class StudyDetailsPage{
+export class StudyDetailsPage {
   private readonly page: Page;
   private readonly input_name: Locator;
   private readonly dropDown_sponsorTeam: Locator;

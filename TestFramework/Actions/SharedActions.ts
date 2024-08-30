@@ -1,7 +1,7 @@
 import { Locator, Page } from "@playwright/test";
 
 export class SharedActions {
-private readonly page: Page;
+  private readonly page: Page;
   private readonly saveButton: Locator;
   private readonly applyButton: Locator;
   private readonly addButton: Locator;
