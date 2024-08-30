@@ -1,4 +1,4 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class BaseModalComponent {
   protected readonly page: Page;
@@ -11,9 +11,9 @@ export class BaseModalComponent {
   constructor(page: Page, containerXPath: string) {
     this.page = page;
     this.modal = this.page.locator(containerXPath);
-    this.saveButton = this.modal.locator("//button[@data-testid = 'primary']");
-    this.cancelButton = this.modal.locator("//button[@data-testid = 'cancel']");
-    this.closeButton = this.modal.locator("//button[@data-testid = 'close']");
+    this.saveButton = this.modal.locator('//button[@data-testid = "primary"]');
+    this.cancelButton = this.modal.locator('//button[@data-testid = "cancel"]');
+    this.closeButton = this.modal.locator('//button[@data-testid = "close"]');
   }
 
   public async clickSaveButton() {

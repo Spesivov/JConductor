@@ -1,7 +1,7 @@
-import { Page } from "@playwright/test";
-import { StudyListPage } from "./StudyListPage";
-import { LoginPage } from "./LoginPage";
-import { StudyDetailsPage } from "./StudyDetailsPage";
+import { Page } from '@playwright/test';
+import { StudyListPage } from './StudyListPage';
+import { LoginPage } from './LoginPage';
+import { StudyDetailsPage } from './StudyDetailsPage';
 
 export class CCEPages {
   constructor(public page: Page) {}

@@ -1,4 +1,4 @@
-import { Page, Locator } from "@playwright/test";
+import { Page, Locator } from '@playwright/test';
 
 export class HeaderComponent {
   protected readonly page: Page;
@@ -7,8 +7,8 @@ export class HeaderComponent {
 
   constructor(page: Page) {
     this.page = page;
-    this.logo = page.locator("//a[contains(@id, '_lnkImgHome')]");
-    this.globalSearchInput = page.locator("//input[@placeholder='Search']");
+    this.logo = page.locator('//a[contains(@id, "_lnkImgHome")]');
+    this.globalSearchInput = page.locator('//input[@placeholder="Search"]');
   }
 
   async clickLogoImage() {

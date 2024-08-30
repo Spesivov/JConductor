@@ -1,4 +1,4 @@
-import { Locator, type Page } from "@playwright/test";
+import { Locator, type Page } from '@playwright/test';
 
 export class ChooseSitePage {
   private page: Page;
@@ -6,7 +6,7 @@ export class ChooseSitePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.selectButton = page.locator("xpath=//input[@id = 'CCE_cphMain_cmdSubmit']");
+    this.selectButton = page.locator('xpath=//input[@id = "CCE_cphMain_cmdSubmit"]');
   }
 
   async selectSite(site: string) {

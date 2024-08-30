@@ -1,5 +1,7 @@
-import { test, expect } from "../TestFramework/Fixtures/TestFixture";
+import { test, expect } from '../TestFramework/Fixtures/TestFixture';
 
-test("User can sign in", async ({ page }) => {
-  await expect(page).toHaveTitle("Clinical Conductor CTMS - Welcome", { timeout: 10000 });
+test('User can sign in', async ({ page }) => {
+  await expect(page).toHaveTitle('Clinical Conductor CTMS - Welcome', {
+    timeout: 10000,
+  });
 });

@@ -4,14 +4,9 @@ export class DropDownComponent {
   private readonly page: Page;
   private readonly dropDown: Locator;
 
-  constructor(page: Page, locator: string, parent?: Locator) {
+  constructor(page: Page, locator: string) {
     this.page = page;
-
-    if (parent === undefined) {
-      this.dropDown = page.locator(locator);
-    } else {
-      this.dropDown = parent.locator(locator);
-    }
+    this.dropDown = page.locator(locator);
   }
 
   public async selectValue(value: string) {
