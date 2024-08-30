@@ -1,7 +1,7 @@
-import { Locator, Page } from "@playwright/test";
-import { StudyBannerComponent } from "../Components/StudyBannerComponent";
+import { Locator, Page } from '@playwright/test';
+import { StudyBannerComponent } from '../Components/StudyBannerComponent';
 
-export class StudyDetailsPage{
+export class StudyDetailsPage {
   private readonly page: Page;
   private readonly input_name: Locator;
   private readonly dropDown_sponsorTeam: Locator;
@@ -11,9 +11,9 @@ export class StudyDetailsPage{
   constructor(page: Page) {
     this.page = page;
     this.banner = new StudyBannerComponent(page);
-    this.input_name = page.locator("#CCE_cphMain_txtStudyID");
-    this.dropDown_sponsorTeam = page.locator("#CCE_cphMain_cbSponsor");
-    this.dropDown_managingSite = page.locator("#CCE_cphMain_cbSite");
+    this.input_name = page.locator('#CCE_cphMain_txtStudyID');
+    this.dropDown_sponsorTeam = page.locator('#CCE_cphMain_cbSponsor');
+    this.dropDown_managingSite = page.locator('#CCE_cphMain_cbSite');
   }
 
   async inputStudyName(studyName: string) {

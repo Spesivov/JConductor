@@ -1,7 +1,7 @@
-import { Locator, Page } from "@playwright/test";
+import { Locator, Page } from '@playwright/test';
 
 export class SharedActions {
-private readonly page: Page;
+  private readonly page: Page;
   private readonly saveButton: Locator;
   private readonly applyButton: Locator;
   private readonly addButton: Locator;
@@ -10,11 +10,11 @@ private readonly page: Page;
 
   constructor(page: Page) {
     this.page = page;
-    this.saveButton = this.page.locator("//input[@id='CCE_cphMenu_cmdSave']");
-    this.applyButton = this.page.locator("//input[@id='CCE_cphMenu_cmdApply']");
-    this.addButton = this.page.locator("//input[contains(@id, '_cmdAdd')]");
-    this.returnButton = this.page.locator("#CCE_cphMenu_cmdCancel");
-    this.refreshButton = this.page.locator("#CCE_cphMain_cmdRefresh");
+    this.saveButton = this.page.locator('//input[@id="CCE_cphMenu_cmdSave"]');
+    this.applyButton = this.page.locator('//input[@id="CCE_cphMenu_cmdApply"]');
+    this.addButton = this.page.locator('//input[contains(@id, "_cmdAdd")]');
+    this.returnButton = this.page.locator('#CCE_cphMenu_cmdCancel');
+    this.refreshButton = this.page.locator('#CCE_cphMain_cmdRefresh');
   }
 
   public async clickSaveButton() {
@@ -35,6 +35,6 @@ private readonly page: Page;
 
   public async clickRefreshButton() {
     await this.refreshButton.click();
-    await this.page.locator("#CCE_cphMain_UpdateProgress").waitFor({ state: "hidden" });
+    await this.page.locator('#CCE_cphMain_UpdateProgress').waitFor({ state: 'hidden' });
   }
 }
