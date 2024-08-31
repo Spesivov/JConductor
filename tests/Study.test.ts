@@ -1,11 +1,12 @@
 import { test, expect } from '../TestFramework/Fixtures/TestFixture';
+import { faker } from '@faker-js/faker';
 
 test('[CC-T499] Study List - Add Study (CCE)', async ({ cce, sharedActions }) => {
   //Act
   await cce.studyList.go();
   await cce.studyList.clickAddStudyButton();
 
-  const studyName = 'Advarra company';
+  const studyName = faker.company.name();
   await cce.studyDetails.inputStudyName(studyName);
   await sharedActions.clickApplyButton();
 
