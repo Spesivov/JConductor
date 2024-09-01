@@ -3,6 +3,7 @@ import { LoginPage } from '../Pages/LoginPage';
 import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { SharedActions } from '../Actions/SharedActions';
+import { AppSettings } from '../../AppSettings';
 
 type MyFixtures = {
   loginPage: LoginPage;
@@ -17,8 +18,8 @@ export const test = base.extend<MyFixtures>({
       // Set up the fixture.
       const loginPage = new LoginPage(page);
       await page.goto('/');
-      await loginPage.populateName('automation');
-      await loginPage.populatePassword('Password1');
+      await loginPage.populateName(AppSettings.Username);
+      await loginPage.populatePassword(AppSettings.Password);
       await loginPage.clickSignInButton();
 
       await use(loginPage);
@@ -29,7 +30,7 @@ export const test = base.extend<MyFixtures>({
   chooseSitePage: [
     async ({ page }, use) => {
       const chooseSitePage = new ChooseSitePage(page);
-      await chooseSitePage.selectSite('Aruba Research');
+      await chooseSitePage.selectSite(AppSettings.Site);
       await chooseSitePage.clickSelectButton();
       await use(chooseSitePage);
     },
