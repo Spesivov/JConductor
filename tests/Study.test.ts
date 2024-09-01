@@ -5,7 +5,7 @@ test('[CC-T499] Study List - Add Study (CCE)', async ({ cce, sharedActions, db }
   //Sample usage of db fixture
   const studies = await db.studyRepository.getStudyList(278);
   console.log(`Study list: \n ${JSON.stringify(studies[0], null, 2)}`);
-  console.log(`Study list id: ${studies[0].StudyID}`)
+  console.log(`Study list id: ${studies[0].studyId}`)
 
   //Act
   await cce.studyList.go();
