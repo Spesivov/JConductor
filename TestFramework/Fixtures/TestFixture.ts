@@ -4,6 +4,7 @@ import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { SharedActions } from '../Actions/SharedActions';
 import { AppSettings } from '../../AppSettings';
+import {DbFixture} from '../Fixtures/DbFixture'
 
 type MyFixtures = {
   loginPage: LoginPage;
