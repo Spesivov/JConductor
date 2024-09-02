@@ -1,16 +1,17 @@
+/* eslint-disable no-empty-pattern */
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../Pages/LoginPage';
 import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { SharedActions } from '../Actions/SharedActions';
 import { AppSettings } from '../../AppSettings';
-import {DbFixture} from '../Fixtures/DbFixture'
+import { DbFixture } from '../Fixtures/DbFixture';
 
 type MyFixtures = {
   loginPage: LoginPage;
   chooseSitePage: ChooseSitePage;
   cce: CCEPages;
-  sharedActions: SharedActions
+  sharedActions: SharedActions;
   db: DbFixture;
 };
 
@@ -19,7 +20,7 @@ export const test = base.extend<MyFixtures>({
     async ({ page }, use) => {
       // Set up the fixture.
       const loginPage = new LoginPage(page);
-      await page.goto('/');
+      await page.goto('/', { waitUntil: 'commit' });
       await loginPage.populateName(AppSettings.Username);
       await loginPage.populatePassword(AppSettings.Password);
       await loginPage.clickSignInButton();
@@ -56,7 +57,7 @@ export const test = base.extend<MyFixtures>({
   ],
 
   db: [
-    async ({ }, use) => {
+    async ({}, use) => {
       const dbFixture = new DbFixture();
       await use(dbFixture);
     },
