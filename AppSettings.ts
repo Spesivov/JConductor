@@ -1,10 +1,28 @@
-export class AppSettings {
-  public static Branch: string = process.env.BRANCH_NAME!;
-  public static Username: string = process.env.USER_NAME!;
-  public static Password: string = process.env.PASSWORD!;
-  public static Site: string = 'Aruba Research';
-  public static APIHeaders = {
-    ccapikey: process.env.APIKEY,
-    'content-type': 'application/json; charset=utf-8',
+type Settings = {
+  branch: string;
+  credentials: {
+    username: string;
+    password: string;
   };
-}
+  application: {
+    site: string;
+  };
+  headers: [[string, string], [string, string]];
+};
+
+const defineSettings: Settings = {
+  branch: process.env.BRANCH_NAME!,
+  credentials: {
+    username: process.env.USER_NAME!,
+    password: process.env.PASSWORD!,
+  },
+  application: {
+    site: 'Aruba Research',
+  },
+  headers: [
+    ['ccapikey', process.env.APIKEY!],
+    ['content-type', 'application/json; charset=utf-8'],
+  ],
+};
+
+export default defineSettings;
