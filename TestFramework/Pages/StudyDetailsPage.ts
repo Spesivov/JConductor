@@ -2,29 +2,27 @@ import { Locator, Page } from '@playwright/test';
 import { StudyBannerComponent } from '../Components/StudyBannerComponent';
 
 export class StudyDetailsPage {
-  private readonly page: Page;
-  private readonly input_name: Locator;
-  private readonly dropDown_sponsorTeam: Locator;
-  private readonly dropDown_managingSite: Locator;
+  private readonly nameInput: Locator;
+  private readonly sponsorTeamDropDown: Locator;
+  private readonly managingSiteDropDown: Locator;
   public readonly banner: StudyBannerComponent;
 
   constructor(page: Page) {
-    this.page = page;
     this.banner = new StudyBannerComponent(page);
-    this.input_name = page.locator('#CCE_cphMain_txtStudyID');
-    this.dropDown_sponsorTeam = page.locator('#CCE_cphMain_cbSponsor');
-    this.dropDown_managingSite = page.locator('#CCE_cphMain_cbSite');
+    this.nameInput = page.locator('#CCE_cphMain_txtStudyID');
+    this.sponsorTeamDropDown = page.locator('#CCE_cphMain_cbSponsor');
+    this.managingSiteDropDown = page.locator('#CCE_cphMain_cbSite');
   }
 
   async inputStudyName(studyName: string) {
-    await this.input_name.fill(studyName);
+    await this.nameInput.fill(studyName);
   }
 
   async selectSponsorTeam(sponsorTeamName: string) {
-    await this.dropDown_sponsorTeam.selectOption({ label: sponsorTeamName });
+    await this.sponsorTeamDropDown.selectOption({ label: sponsorTeamName });
   }
 
   async selectManagingSite(managingSiteName: string) {
-    await this.dropDown_managingSite.selectOption({ label: managingSiteName });
+    await this.managingSiteDropDown.selectOption({ label: managingSiteName });
   }
 }
