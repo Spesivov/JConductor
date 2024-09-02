@@ -1,13 +1,11 @@
 import { type Locator, type Page } from '@playwright/test';
 
 export class LoginPage {
-  private page: Page;
   private nameInput: Locator;
   private passwordInput: Locator;
   private signInButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
     this.nameInput = page.locator('input[name="txtUserID"]');
     this.passwordInput = page.locator('input[name="txtPassword"]');
     this.signInButton = page.locator('input[type="submit"]');

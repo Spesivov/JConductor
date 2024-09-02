@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import { AppSettings } from './AppSettings';
+import defineSettings from './AppSettings';
 
 /**
  * Read environment variables from file.
@@ -30,7 +30,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: `https://cce-${AppSettings.Branch}.dev.bio-optronics.com/CCEWeb/`,
+    baseURL: `https://cce-${defineSettings.branch}.dev.bio-optronics.com/CCEWeb/`,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
