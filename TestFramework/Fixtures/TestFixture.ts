@@ -4,12 +4,14 @@ import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { SharedActions } from '../Actions/SharedActions';
 import { AppSettings } from '../../AppSettings';
+import {DbFixture} from '../Fixtures/DbFixture'
 
 type MyFixtures = {
   loginPage: LoginPage;
   chooseSitePage: ChooseSitePage;
   cce: CCEPages;
-  sharedActions: SharedActions;
+  sharedActions: SharedActions
+  db: DbFixture;
 };
 
 export const test = base.extend<MyFixtures>({
@@ -49,6 +51,14 @@ export const test = base.extend<MyFixtures>({
     async ({ page }, use) => {
       const sharedActions = new SharedActions(page);
       await use(sharedActions);
+    },
+    { auto: true },
+  ],
+
+  db: [
+    async ({ }, use) => {
+      const dbFixture = new DbFixture();
+      await use(dbFixture);
     },
     { auto: true },
   ],
