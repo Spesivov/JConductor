@@ -4,12 +4,14 @@ import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { DbFixture } from '../Fixtures/DbFixture';
 import { Actions } from '../Actions/Actions';
+import { ApiFixture } from './ApiFixture';
 
 type MyFixtures = {
   chooseSitePage: ChooseSitePage;
   cce: CCEPages;
   actions: Actions;
   db: DbFixture;
+  api: ApiFixture
 };
 
 export const test = base.extend<MyFixtures>({
@@ -30,9 +32,17 @@ export const test = base.extend<MyFixtures>({
   ],
 
   db: [
-    async ({}, use) => {
+    async ({ }, use) => {
       const dbFixture = new DbFixture();
       await use(dbFixture);
+    },
+    { auto: true },
+  ],
+
+  api: [
+    async ({ }, use) => {
+      const apiFixture = new ApiFixture();
+      await use(apiFixture);
     },
     { auto: true },
   ],
