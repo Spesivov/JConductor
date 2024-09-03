@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { HeaderComponent } from '../Components/HeaderComponent';
 
 export class SharedActions {
   private readonly page: Page;
@@ -8,6 +9,8 @@ export class SharedActions {
   private readonly returnButton: Locator;
   private readonly refreshButton: Locator;
 
+  private readonly header: HeaderComponent;
+
   constructor(page: Page) {
     this.page = page;
     this.saveButton = this.page.locator('//input[@id="CCE_cphMenu_cmdSave"]');
@@ -15,6 +18,15 @@ export class SharedActions {
     this.addButton = this.page.locator('//input[contains(@id, "_cmdAdd")]');
     this.returnButton = this.page.locator('#CCE_cphMenu_cmdCancel');
     this.refreshButton = this.page.locator('#CCE_cphMain_cmdRefresh');
+    this.header = new HeaderComponent(page);
+  }
+
+  public async waitLoader() {
+    await this.page.locator('.raDiv').locator('visible=true').waitFor({ state: 'hidden', timeout: 30000 });
+  }
+
+  public async globalSearch(value: string) {
+    await this.header.globalSearch(value);
   }
 
   public async clickSaveButton() {
