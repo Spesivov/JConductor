@@ -7,8 +7,7 @@ type Settings = {
   application: {
     site: string;
   };
-  headers: [[string, string], [string, string]];
-};
+}
 
 const defineSettings: Settings = {
   branch: process.env.BRANCH_NAME!,
@@ -19,10 +18,6 @@ const defineSettings: Settings = {
   application: {
     site: 'Aruba Research',
   },
-  headers: [
-    ['ccapikey', process.env.APIKEY!],
-    ['content-type', 'application/json; charset=utf-8'],
-  ],
 };
 
 export default defineSettings;

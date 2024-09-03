@@ -36,6 +36,11 @@ export default defineConfig({
     trace: 'on-first-retry',
     headless: true,
     navigationTimeout: 60000,
+    extraHTTPHeaders: {
+      'Accept': 'application/vnd.github.v3+json',
+      'ccapikey':  process.env.APIKEY!,
+      'content-type': 'application/json; charset=utf-8',
+    },
   },
 
   /* Configure projects for major browsers */

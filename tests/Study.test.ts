@@ -24,3 +24,10 @@ test.skip('Make a DB call', async ({ db }) => {
   console.log(`Study list: \n ${JSON.stringify(studies[0], null, 2)}`);
   console.log(`Study list id: ${studies[0].studyId}`);
 });
+
+test.skip('Make a API call', async ({ api, request }) => {
+  //Sample usage of db fixture
+  const result = await api.studyApi.getStudies(request);
+  const studies = await result.text();
+  console.log(`API result: ${studies}`);
+});
