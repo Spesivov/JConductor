@@ -1,8 +1,8 @@
 import { Page } from '@playwright/test';
-import { StudyListPage } from '../Pages/StudyListPage';
-import { StudyDetailsPage } from '../Pages/StudyDetailsPage';
+import { StudyDetailsPage } from '../Pages/Study/StudyDetailsPage';
 import { SharedActions } from './SharedActions';
 import { StudyStatuses } from '../Enums/StudyStatuses';
+import { StudyListPage } from '../Pages/Study/StudyListPage';
 
 export class StudyActions {
   private readonly sharedActions: SharedActions;

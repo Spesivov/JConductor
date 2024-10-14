@@ -1,11 +1,11 @@
 import { Locator, type Page } from '@playwright/test';
+import { BaseLegacyPage } from './BaseLegacyPage';
 
-export class ChooseSitePage {
-  private page: Page;
+export class ChooseSitePage extends BaseLegacyPage {
   private selectButton: Locator;
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.selectButton = page.locator('xpath=//input[@id = "CCE_cphMain_cmdSubmit"]');
   }
 
