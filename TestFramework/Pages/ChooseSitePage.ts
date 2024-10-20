@@ -6,7 +6,7 @@ export class ChooseSitePage {
 
   constructor(page: Page) {
     this.page = page;
-    this.selectButton = page.locator('xpath=//input[@id = "CCE_cphMain_cmdSubmit"]');
+    this.selectButton = page.locator('xpath=//input[contains(@id,"phMain_cmdSubmit")]');
   }
 
   async selectSite(site: string) {

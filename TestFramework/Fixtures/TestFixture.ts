@@ -4,18 +4,29 @@ import { ChooseSitePage } from '../Pages/ChooseSitePage';
 import { CCEPages } from '../Pages/CCEPages';
 import { DbFixture } from '../Fixtures/DbFixture';
 import { Actions } from '../Actions/Actions';
+import { CCSPages } from '../Pages/CCSPages';
 
 type MyFixtures = {
   chooseSitePage: ChooseSitePage;
   cce: CCEPages;
+  ccs: CCSPages;
   actions: Actions;
   db: DbFixture;
 };
 
 export const test = base.extend<MyFixtures>({
+
   cce: [
     async ({ page }, use) => {
       const cce = new CCEPages(page);
+      await use(cce);
+    },
+    { auto: true },
+  ],
+
+  ccs: [
+    async ({ page }, use) => {
+      const cce = new CCSPages(page);
       await use(cce);
     },
     { auto: true },
