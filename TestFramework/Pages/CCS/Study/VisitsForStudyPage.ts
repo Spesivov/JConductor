@@ -118,11 +118,13 @@ export class VisitsForStudyPage {
         const dropdown = this.page.locator(`//input[@value='${visitName}']/../following-sibling::td/div[contains(@id, rcbtype)]`);
         const option = this.page.locator(`//div[contains(@id, 'rcbType_DropDown') and contains(@style, 'visible')]//text()[contains(., '${value}')]/preceding-sibling::span`);
 
-        await dropdown.scrollIntoViewIfNeeded();
+       // await dropdown.scrollIntoViewIfNeeded();
         //const input = this.page.locator(`//input[@value='${visitName}']/../following-sibling::td//input[contains(@id, 'rcbType_Input')]`);
-        await dropdown.click({ force: true });
-        await option.click({ force: true });
+        await dropdown.click();
+        await this.page.waitForTimeout(1000);
 
+        await option.click();
+        await this.page.waitForTimeout(1000);
         // await input.fill(value)
 
         // await this.page.keyboard.press('Tab');
