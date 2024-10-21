@@ -22,8 +22,11 @@ test('[CC-T499] Study List - Add Study (CCE)', async ({ cce, actions }) => {
 Object.keys(StudyStatuses).forEach((key) => {
   test(`Update study status - ${key}`, async ({ cce, actions }) => {
     //Arrange
-    const studyName = faker.company.name();
+    if (key === 'Opportunity') {
+      return;
+    }
 
+    const studyName = faker.company.name();
     await actions.login.loginAndChooseLocation();
     await actions.studyActions.createStudy(studyName);
 

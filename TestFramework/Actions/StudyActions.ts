@@ -3,17 +3,20 @@ import { StudyDetailsPage } from '../Pages/Study/StudyDetailsPage';
 import { SharedActions } from './SharedActions';
 import { StudyStatuses } from '../Enums/StudyStatuses';
 import { StudyListPage } from '../Pages/Study/StudyListPage';
+import { ToastComponent } from '../Components/ToastComponent';
 
 export class StudyActions {
   private readonly sharedActions: SharedActions;
 
   private readonly studyList: StudyListPage;
   private readonly studyDetails: StudyDetailsPage;
+  private readonly toast: ToastComponent;
 
   constructor(public page: Page) {
     this.sharedActions = new SharedActions(page);
     this.studyList = new StudyListPage(page);
     this.studyDetails = new StudyDetailsPage(page);
+    this.toast = new ToastComponent(page);
   }
 
   public async createStudy(studyName: string) {
@@ -33,5 +36,8 @@ export class StudyActions {
     const studyStatusSlideOut = await this.studyDetails.banner.clickStudyStatus();
     await studyStatusSlideOut.selectStatus(status);
     await studyStatusSlideOut.clickSaveButton();
+    await this.toast.waitForDisplaying();
+    await this.toast.waitForHidding();
+    await studyStatusSlideOut.clickCloseButton();
   }
 }
