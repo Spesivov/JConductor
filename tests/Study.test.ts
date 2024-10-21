@@ -1,3 +1,4 @@
+import { StudyStatuses } from '../TestFramework/Enums/StudyStatuses';
 import { test, expect } from '../TestFramework/Fixtures/TestFixture';
 import { faker } from '@faker-js/faker';
 
@@ -16,6 +17,27 @@ test('[CC-T499] Study List - Add Study (CCE)', async ({ cce, actions }) => {
   //Assert
   const studyStatus = await cce.studyDetails.banner.getStudyStatus();
   expect(studyStatus, 'Study has been created but has incorrect default status').toBe('Opportunity');
+});
+
+Object.keys(StudyStatuses).forEach((key) => {
+  test(`Update study status - ${key}`, async ({ cce, actions }) => {
+    //Arrange
+    if (key === 'Opportunity') {
+      return;
+    }
+
+    const studyName = faker.company.name();
+    await actions.login.loginAndChooseLocation();
+    await actions.studyActions.createStudy(studyName);
+
+    //Act
+    await actions.studyActions.updateStudyStatus(studyName, key as StudyStatuses);
+
+    //Assert
+    await actions.studyActions.openStudy(studyName);
+    const studyStatus = await cce.studyDetails.banner.getStudyStatus();
+    expect(studyStatus).toBe(key);
+  });
 });
 
 test.skip('Make a DB call', async ({ db }) => {
