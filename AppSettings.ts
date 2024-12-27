@@ -1,3 +1,7 @@
+import * as dotenv from 'dotenv';
+
+dotenv.config();
+
 type Settings = {
   branch: string;
   credentials: {
