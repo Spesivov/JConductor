@@ -8,19 +8,19 @@ on:
     inputs:
       branch_name:
         description: 'Branch name'
-        required: true
+        required: false
       user_name:
         description: 'User name'
-        required: true
+        required: false
       password:
         description: 'Password'
-        required: true
+        required: false
       apikey:
         description: 'API Key'
-        required: true
+        required: false
       database_url:
         description: 'Database URL'
-        required: true
+        required: false
 
 jobs:
   test:
