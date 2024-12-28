@@ -4,17 +4,34 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  workflow_dispatch:
+    inputs:
+      branch_name:
+        description: 'Branch name'
+        required: true
+      user_name:
+        description: 'User name'
+        required: true
+      password:
+        description: 'Password'
+        required: true
+      apikey:
+        description: 'API Key'
+        required: true
+      database_url:
+        description: 'Database URL'
+        required: true
+
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
-      BRANCH_NAME: ${{ secrets.BRANCH_NAME }}
-      USER_NAME: ${{ secrets.USER_NAME }}
-      PASSWORD: ${{ secrets.PASSWORD }}
-      APIKEY: ${{ secrets.APIKEY }}
-      DATABASE_URL: ${{ secrets.DATABASE_URL }}
-
+      BRANCH_NAME: ${{ github.event.inputs.branch_name || secrets.BRANCH_NAME }}
+      USER_NAME: ${{ github.event.inputs.user_name || secrets.USER_NAME }}
+      PASSWORD: ${{ github.event.inputs.password || secrets.PASSWORD }}
+      APIKEY: ${{ github.event.inputs.apikey || secrets.APIKEY }}
+      DATABASE_URL: ${{ github.event.inputs.database_url || secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
