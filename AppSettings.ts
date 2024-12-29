@@ -24,7 +24,7 @@ const defineSettings: Settings = {
     site: 'Aruba Research',
   },
   headers: [
-    ['ccapikey', process.env.APIKEY!],
+    ['ccapikey', process.env.API_KEY!],
     ['content-type', 'application/json; charset=utf-8'],
   ],
 };
