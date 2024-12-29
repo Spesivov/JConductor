@@ -30,7 +30,7 @@ jobs:
       BRANCH_NAME: ${{ github.event.inputs.branch_name || secrets.BRANCH_NAME }}
       USER_NAME: ${{ github.event.inputs.user_name || secrets.USER_NAME }}
       PASSWORD: ${{ github.event.inputs.password || secrets.PASSWORD }}
-      APIKEY: ${{ github.event.inputs.apikey || secrets.APIKEY }}
+      API_KEY: ${{ github.event.inputs.apikey || secrets.API_KEY }}
       DATABASE_URL: ${{ github.event.inputs.database_url || secrets.DATABASE_URL }}
     steps:
       - uses: actions/checkout@v4
